@@ -1,3 +1,4 @@
+import { formatPrice } from "@/lib/utils";
 import { TrolleyIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
@@ -73,7 +74,7 @@ export const productType = defineType({
     prepare({ title, media, price }) {
       return {
         title,
-        subtitle: `₺${price}`,
+        subtitle: formatPrice(price),
         media,
       };
     },
