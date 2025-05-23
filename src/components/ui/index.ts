@@ -22,11 +22,22 @@ export {
   CommandSeparator,
 } from "./command";
 export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardAction,
+  CardDescription,
+  CardContent,
+} from "./card";
+export {
   Popover,
   PopoverTrigger,
   PopoverContent,
   PopoverAnchor,
 } from "./popover";
+export { ScrollArea, ScrollBar } from "./scroll-area";
 export { Button, buttonVariants } from "./button";
 export { Separator } from "./separator";
 export { Input } from "./input";
+export { Badge } from "./badge";

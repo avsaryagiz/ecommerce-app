@@ -7,8 +7,11 @@ import { Button } from "./ui";
 
 export function DisableDraftMode() {
   const router = useRouter();
+
+  // useTransition to handle UI state during async update
   const [pending, startTransition] = useTransition();
 
+  // Check if current window is an iframe or popup; don't render button in that case
   const isIframeOrPopup =
     typeof window !== "undefined" &&
     (window !== window.parent || !!window.opener);
@@ -16,6 +19,7 @@ export function DisableDraftMode() {
     return null;
   }
 
+  // Function to disable draft mode and refresh page
   const disable = () =>
     startTransition(async () => {
       await disableDraftMode();
@@ -23,11 +27,17 @@ export function DisableDraftMode() {
     });
 
   return (
-    <div className="w-fit ml-auto px-4">
+    <div className="ml-auto w-fit px-4">
+      {/* Show loading text while disabling draft mode */}
       {pending ? (
         "Disabling draft mode..."
       ) : (
-        <Button type="button" variant="destructive" onClick={disable} className="cursor-pointer">
+        <Button
+          type="button"
+          variant="destructive"
+          onClick={disable}
+          className="cursor-pointer"
+        >
           Disable draft mode
         </Button>
       )}

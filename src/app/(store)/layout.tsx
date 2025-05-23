@@ -34,10 +34,8 @@ export default async function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <main>
-            <Header />
-            {children}
-          </main>
+          <Header />
+          {children}
           <SanityLive />
           {(await draftMode()).isEnabled && (
             <>

@@ -1,8 +1,8 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "../live";
-import { CouponCode } from "./coupon-codes";
+import { COUPON_CODES } from "@/constants/enums";
 
-export const getActiveCouponCode = async (couponCode: CouponCode) => {
+export const getActiveCouponCode = async (couponCode: COUPON_CODES) => {
   const ACTIVE_SALE_BY_COUPON_CODE_QUERY = defineQuery(`
   *[
       _type == "sale" &&
