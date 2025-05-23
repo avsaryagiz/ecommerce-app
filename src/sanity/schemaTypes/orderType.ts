@@ -87,7 +87,8 @@ export const orderType = defineType({
               price: "product.price",
               currency: "product.currency",
             },
-            prepare({ product, quantity, image, price, currency }) {
+            // @todo: add currency to the preview
+            prepare({ product, quantity, image, price }) {
               return {
                 title: `${product} x ${quantity} pcs`,
                 subtitle: `${price} * ${quantity}`,

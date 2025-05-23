@@ -69,8 +69,9 @@ export default async function OrdersPage() {
                       </p>
                     </div>
                   </div>
+                </div>
                   {order.amountDiscount ? (
-                    <div className="mt-4 rounded-lg bg-red-50 p-3 sm:p-4">
+                    <div className="mt-4 rounded-lg flex sm:justify-between sm:items-center bg-red-50 p-3 sm:p-4">
                       <p className="mb-1 text-sm font-medium text-red-600 sm:text-base">
                         Discount Applied:{" "}
                         {formatCurrency(order.amountDiscount, order.currency)}
@@ -84,7 +85,6 @@ export default async function OrdersPage() {
                       </p>
                     </div>
                   ) : null}
-                </div>
 
                 <div className="px-4 py-3 sm:px-6 sm:py-4">
                   <p className="mb-3 text-sm font-semibold text-gray-600 sm:mb-4">

@@ -1,15 +1,15 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { SignInButton, useAuth, useUser } from "@clerk/nextjs";
 import AddToBasketButton from "@/components/add-to-basket-button";
 import Loader from "@/components/loader";
 import { Button } from "@/components/ui";
 import { formatCurrency } from "@/lib/utils";
 import { urlFor } from "@/sanity/lib/image";
 import useBasketStore from "@/stores/basket-store";
-import { SignInButton, useAuth, useUser } from "@clerk/nextjs";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import {
   createCheckoutSession,
   Metadata,
@@ -125,7 +125,10 @@ export default function BasketPage() {
                 {formatCurrency(
                   groupedItems.reduce(
                     (total, item) =>
-                      total + (item.product.price ? item.product.price : 0),
+                      total +
+                      (item.product.price
+                        ? item.product.price * item.quantity
+                        : 0),
                     0,
                   ),
                 )}

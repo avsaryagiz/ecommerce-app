@@ -6,6 +6,10 @@ import { PortableText } from "next-sanity";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-static";
+export const revalidate = 3600; // 1 hour
+// @todo: use SSG for product pages later
+
 export default async function ProductPage({
   params,
 }: {

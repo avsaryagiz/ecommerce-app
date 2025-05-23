@@ -1,7 +1,7 @@
 import ProductGrid from "./product-grid";
+import CategorySelector from "./category-selector";
 import { Separator } from "./ui";
 import type { Category, Product } from "../../sanity.types";
-import CategorySelector from "./category-selector";
 
 interface ProductsViewProps {
   products: Product[];
@@ -12,7 +12,6 @@ export default function ProductsView({
   products,
   categories,
 }: ProductsViewProps) {
-  console.log("Products", products);
   return (
     <div className="flex flex-col">
       {/* Categories */}

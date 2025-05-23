@@ -42,7 +42,6 @@ export const getProductBySlug = async (slug: string) => {
 };
 
 export const searchProductsByName = async (searchParam: string) => {
-  console.log("searchParams", searchParam);
   const PRODUCT_SEARCH_QUERY = defineQuery(`
     *[
     _type == "product" && 
