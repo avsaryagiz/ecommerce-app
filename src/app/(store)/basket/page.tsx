@@ -3,7 +3,7 @@
 import AddToBasketButton from "@/components/add-to-basket-button";
 import Loader from "@/components/loader";
 import { Button } from "@/components/ui";
-import { formatPrice } from "@/lib/utils";
+import { formatCurrency } from "@/lib/utils";
 import { urlFor } from "@/sanity/lib/image";
 import useBasketStore from "@/stores/basket-store";
 import { SignInButton, useAuth, useUser } from "@clerk/nextjs";
@@ -96,7 +96,7 @@ export default function BasketPage() {
                   </h2>
                   <p className="text-sm sm:text-base">
                     Price:{" "}
-                    {formatPrice(
+                    {formatCurrency(
                       item.product.price
                         ? item.product.price * item.quantity
                         : 0,
@@ -122,7 +122,7 @@ export default function BasketPage() {
             <p className="flex justify-between border-t pt-2 text-2xl font-bold">
               <span>Total</span>
               <span>
-                {formatPrice(
+                {formatCurrency(
                   groupedItems.reduce(
                     (total, item) =>
                       total + (item.product.price ? item.product.price : 0),

@@ -5,9 +5,17 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatPrice(price: number) {
-  return price?.toLocaleString("tr-TR", {
-    style: "currency",
-    currency: "TRY",
-  });
+export function formatCurrency(
+  amount: number,
+  currencyCode: string = "TRY",
+): string {
+  try {
+    return new Intl.NumberFormat("tr-TR", {
+      style: "currency",
+      currency: currencyCode.toUpperCase(),
+    }).format(amount);
+  } catch (error) {
+    console.error("Error formatting currency:", error);
+    return `${currencyCode.toLocaleUpperCase()}${amount.toFixed(2)}`;
+  }
 }

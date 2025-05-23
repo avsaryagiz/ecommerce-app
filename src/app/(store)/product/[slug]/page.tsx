@@ -1,5 +1,5 @@
 import AddToBasketButton from "@/components/add-to-basket-button";
-import { cn, formatPrice } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 import { urlFor } from "@/sanity/lib/image";
 import { getProductBySlug } from "@/sanity/lib/products";
 import { PortableText } from "next-sanity";
@@ -45,7 +45,7 @@ export default async function ProductPage({
           <div>
             <h1 className="mb-4 text-3xl font-bold">{product.name}</h1>
             <div className="mb-4 text-xl font-semibold">
-              {product.price && (formatPrice(product.price) ?? "₺0,00")}
+              {product.price && (formatCurrency(product.price) ?? "₺0,00")}
             </div>
             <div className="prose mb-6 max-w-none">
               {Array.isArray(product.description) && (

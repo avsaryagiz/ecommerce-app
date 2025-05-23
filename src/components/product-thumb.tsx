@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
-import { cn, formatPrice } from "@/lib/utils";
+import { cn, formatCurrency } from "@/lib/utils";
 import type { Product } from "../../sanity.types";
 
 export default function ProductThumb({ product }: { product: Product }) {
@@ -43,7 +43,7 @@ export default function ProductThumb({ product }: { product: Product }) {
             .join("") || "No description available."}
         </p>
         <p className="mt-2 text-lg font-bold text-gray-900">
-          {product.price ? formatPrice(product.price) : "₺0,00"}
+          {product.price ? formatCurrency(product.price) : "₺0,00"}
         </p>
       </div>
     </Link>
