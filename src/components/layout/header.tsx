@@ -9,8 +9,9 @@ import {
   UserButton,
   useUser,
 } from "@clerk/nextjs";
-import { buttonVariants, Input } from "../ui";
-import { PackageIcon, TrolleyIcon } from "@sanity/icons";
+import { PackageIcon, SearchIcon, TrolleyIcon } from "@sanity/icons";
+import { InputWithAddon } from "../input-with-addon";
+import { Button, buttonVariants } from "../ui";
 import useBasketStore from "@/stores/basket-store";
 import { cn } from "@/lib/utils";
 
@@ -21,27 +22,41 @@ export default function Header() {
   );
 
   return (
-    <header className="flex flex-wrap items-center justify-between px-4 py-2 container mx-auto">
-      {/* Top row */}
-      <div className="flex w-full flex-wrap items-center justify-between">
-        <Link
-          href="/"
-          className="mx-auto cursor-pointer text-2xl font-bold text-blue-500 hover:opacity-50 sm:mx-0"
-        >
-          Zera
-        </Link>
-        <Form
-          action="/search"
-          className="mt-2 w-full sm:mx-4 sm:mt-0 sm:w-auto sm:flex-1"
-        >
-          <Input
-            type="text"
-            name="query"
-            placeholder="Search for products"
-            className="w-full max-w-4xl"
-          />
-        </Form>
-        <div className="mt-4 flex flex-1 items-center gap-4 sm:mt-0 sm:flex-none">
+    <header className="bg-white shadow-sm">
+      <div className="container mx-auto flex flex-col gap-4 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+        {/* Mobile Top Part: Logo + Search */}
+        <div className="flex flex-col items-center gap-3 sm:flex-1 sm:flex-row sm:items-center sm:justify-start sm:gap-6">
+          {/* Logo */}
+          <Link
+            href="/"
+            aria-label="Go to homepage"
+            className="text-2xl font-bold text-blue-500 hover:opacity-80 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:mr-4"
+          >
+            <span className="block text-center sm:text-left">Zera</span>
+          </Link>
+
+          {/* Search Form */}
+          <Form action="/search" role="search" className="flex w-full max-w-lg">
+            <InputWithAddon
+              placeholder="Search for products..."
+              name="query"
+              rightAddon={
+                <Button
+                  variant="ghost"
+                  type="submit"
+                  className="cursor-pointer"
+                >
+                  <SearchIcon className="size-5" />
+                  Search
+                </Button>
+              }
+            />
+          </Form>
+        </div>
+
+        {/* Mobile Bottom Part: Actions */}
+        <div className="xs:justify-center mt-2 flex justify-between gap-4 sm:mt-0 sm:flex-nowrap sm:justify-end sm:gap-4">
+          {/* Basket */}
           <Link
             href="/basket"
             className={cn(
@@ -49,32 +64,34 @@ export default function Header() {
               buttonVariants({ variant: "default", size: "sm" }),
             )}
           >
-            <TrolleyIcon className="size-6" />
+            <TrolleyIcon className="size-5 max-sm:hidden" />
             {itemCount > 0 && (
               <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                 {itemCount}
               </span>
             )}
-            <span>My Basket</span>
+            <span className="ml-1">My Basket</span>
           </Link>
-          {/* User area */}
+
+          {/* Orders */}
           <ClerkLoaded>
             <SignedIn>
               <Link
                 href="/orders"
                 className={buttonVariants({ variant: "default", size: "sm" })}
               >
-                <PackageIcon className="size-6" />
-                <span>My Orders</span>
+                <PackageIcon className="size-5 max-sm:hidden" />
+                <span className="ml-1">My Orders</span>
               </Link>
             </SignedIn>
 
+            {/* User */}
             {user ? (
               <div className="flex items-center gap-2">
                 <UserButton />
-                <div className="hidden text-xs sm:block">
-                  <p className="text-gray-400">Welcome Back</p>
-                  <p className="font-bold">{user.fullName}</p>
+                <div className="text-xs">
+                  <p className="text-gray-400">Welcome</p>
+                  <p className="font-semibold">{user.fullName}</p>
                 </div>
               </div>
             ) : (

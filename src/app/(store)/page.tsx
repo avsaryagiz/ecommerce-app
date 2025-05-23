@@ -6,8 +6,10 @@ export const dynamic = "force-static";
 export const revalidate = 3600; // 1 hour
 
 export default async function HomePage() {
+  // Fetch all products and categories
   const products = await getAllProducts();
   const categories = await getAllCategories();
+
   return (
     <div>
       <BlackFridayBanner />

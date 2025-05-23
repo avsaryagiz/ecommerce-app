@@ -1,0 +1,5 @@
+export enum COUPON_CODES {
+  BFRIDAY = "BFRIDAY",
+  XMAS2025 = "XMAS2025",
+  NY2026 = "NY2026",
+}
