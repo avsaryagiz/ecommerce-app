@@ -1,3 +1,4 @@
+import AddToBasketButton from "@/components/add-to-basket-button";
 import { cn, formatPrice } from "@/lib/utils";
 import { urlFor } from "@/sanity/lib/image";
 import { getProductBySlug } from "@/sanity/lib/products";
@@ -52,6 +53,7 @@ export default async function ProductPage({
               )}
             </div>
           </div>
+          <AddToBasketButton product={product} disabled={isOutOfStock} />
         </div>
       </div>
     </div>

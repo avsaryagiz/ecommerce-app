@@ -9,11 +9,16 @@ import {
   UserButton,
   useUser,
 } from "@clerk/nextjs";
-import { Button, buttonVariants, Input } from "../ui";
+import { buttonVariants, Input } from "../ui";
 import { PackageIcon, TrolleyIcon } from "@sanity/icons";
+import useBasketStore from "@/stores/basket-store";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const { user } = useUser();
+  const itemCount = useBasketStore((state) =>
+    state.items.reduce((total, item) => total + item.quantity, 0),
+  );
 
   return (
     <header className="flex flex-wrap items-center justify-between px-4 py-2">
@@ -39,10 +44,17 @@ export default function Header() {
         <div className="mt-4 flex flex-1 items-center gap-4 sm:mt-0 sm:flex-none">
           <Link
             href="/basket"
-            className={buttonVariants({ variant: "default", size: "sm" })}
+            className={cn(
+              "relative",
+              buttonVariants({ variant: "default", size: "sm" }),
+            )}
           >
             <TrolleyIcon className="size-6" />
-            {/* Span item count once global state is implemented */}
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                {itemCount}
+              </span>
+            )}
             <span>My Basket</span>
           </Link>
           {/* User area */}
