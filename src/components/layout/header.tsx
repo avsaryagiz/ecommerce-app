@@ -30,9 +30,11 @@ export default function Header() {
           <Link
             href="/"
             aria-label="Go to homepage"
-            className="text-2xl font-bold text-blue-500 hover:opacity-80 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:mr-4"
+            className="text-2xl font-bold text-blue-500 hover:opacity-80 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:mr-4 sm:text-3xl"
           >
-            <span className="block text-center sm:text-left">Zera</span>
+            <span className="font-brand block text-center font-bold sm:text-left">
+              Zera
+            </span>
           </Link>
 
           {/* Search Form */}
@@ -95,7 +97,9 @@ export default function Header() {
                 </div>
               </div>
             ) : (
-              <SignInButton mode="modal" />
+              <SignInButton mode="modal">
+                <Button size="sm" className="cursor-pointer">Sign In</Button>
+              </SignInButton>
             )}
           </ClerkLoaded>
         </div>

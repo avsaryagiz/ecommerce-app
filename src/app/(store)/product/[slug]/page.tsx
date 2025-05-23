@@ -2,9 +2,11 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PortableText } from "next-sanity";
 import AddToBasketButton from "@/components/add-to-basket-button";
-import { getProductBySlug } from "@/sanity/lib/products";
+import { getAllProducts, getProductBySlug } from "@/sanity/lib/products";
 import { cn, formatCurrency } from "@/lib/utils";
 import { urlFor } from "@/sanity/lib/image";
+import { Metadata } from "next";
+import { ROUTES } from "@/constants/app-routes";
 
 // Enable static site generation with hourly revalidation
 export const dynamic = "force-static";
@@ -75,4 +77,59 @@ export default async function ProductPage({
       </div>
     </main>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  // Fetch product data by slug
+  const product = await getProductBySlug(slug);
+
+  // Show 404 page if product is not found
+  if (!product) {
+    return notFound();
+  }
+
+  return {
+    title: product.name,
+    description: `Zera E-commerce | ${product.name}`,
+    openGraph: {
+      title: product.name,
+      description: `Zera E-commerce | ${product.name}`,
+      url: ROUTES.PRODUCT(product.slug?.current ?? ""),
+      images: [
+        {
+          url: urlFor(product.image!).url(),
+          width: 1200,
+          height: 630,
+          alt: product.name ?? "Product Image",
+        },
+      ],
+    },
+    twitter: {
+      title: product.name,
+      description: `Zera E-commerce | ${product.name}`,
+      images: [
+        {
+          url: urlFor(product.image!).url(),
+          width: 1200,
+          height: 630,
+          alt: product.name ?? "Product Image",
+        },
+      ],
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  // Fetch all products to generate static paths
+  const products = await getAllProducts();
+
+  return products.map((product) => ({
+    slug: product.slug?.current ?? "",
+  }));
 }
