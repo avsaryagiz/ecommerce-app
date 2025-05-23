@@ -67,7 +67,7 @@ export default function CategorySelector({
                 );
                 if (selectedCategory?.slug?.current) {
                   router.push(ROUTES.CATEGORIES(selectedCategory.slug.current));
-                  setOpen(false);
+                  setValue(selectedCategory._id);
                   setOpen(false);
                 }
               }
@@ -87,7 +87,7 @@ export default function CategorySelector({
                     router.push(
                       ROUTES.CATEGORIES(category.slug?.current ?? ""),
                     );
-                    setOpen(false);
+                    setValue(value === category._id ? "" : category._id);
                     setOpen(false);
                   }}
                 >
