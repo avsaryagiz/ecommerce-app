@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import ProductsView from "@/components/products-view";
 import { formatSlugToTitle } from "@/lib/utils";
 import { getAllCategories, getProductsByCategory } from "@/sanity/lib/products";
@@ -26,4 +27,29 @@ export default async function CategoryPage({
       </div>
     </main>
   );
+}
+
+export async function generateStaticParams() {
+  const categories = await getAllCategories();
+
+  return categories.map((category) => ({
+    slug: category.slug?.current ?? "",
+  }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const categories = await getAllCategories();
+  const category = categories.find((cat) => cat.slug?.current === slug);
+  const title = category?.title || "Category not found";
+  const description = category?.description || "Explore our collection";
+
+  return {
+    title: `${title}`,
+    description,
+  };
 }

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { SignInButton, useAuth, useUser } from "@clerk/nextjs";
 import {
   createCheckoutSession,
-  Metadata,
+  Metadata as SessionMetadata,
 } from "../../../../actions/create-checkout-session";
 import AddToBasketButton from "@/components/add-to-basket-button";
 import Loader from "@/components/loader";
@@ -57,7 +57,7 @@ export default function BasketPage() {
     if (!isSignedIn) return;
     setIsLoading(true);
     try {
-      const metadata: Metadata = {
+      const metadata: SessionMetadata = {
         orderNumber: crypto.randomUUID(),
         customerName: user?.fullName ?? "Unknown",
         customerEmail: user?.emailAddresses[0]?.emailAddress ?? "Unknown",
@@ -160,7 +160,7 @@ export default function BasketPage() {
                 {isSignedIn ? (
                   <Button
                     onClick={handleCheckout}
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     disabled={isLoading}
                     aria-disabled={isLoading}
                   >

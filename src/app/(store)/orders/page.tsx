@@ -211,3 +211,18 @@ export default async function OrdersPage() {
     </main>
   );
 }
+
+export async function generateMetadata() {
+  return {
+    title: "My Orders",
+    description: "View and manage your orders.",
+    openGraph: {
+      title: "My Orders",
+      description: "View and manage your orders.",
+    },
+    twitter: {
+      title: "My Orders",
+      description: "View and manage your orders.",
+    },
+  };
+}

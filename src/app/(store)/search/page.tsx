@@ -1,7 +1,8 @@
+import Link from "next/link";
+import { Metadata } from "next";
 import ProductGrid from "@/components/product-grid";
 import { ROUTES } from "@/constants/app-routes";
 import { searchProductsByName } from "@/sanity/lib/products";
-import Link from "next/link";
 
 export default async function SearchPage({
   searchParams,
@@ -75,4 +76,19 @@ export default async function SearchPage({
       </div>
     </main>
   );
+}
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    query?: string;
+  }>;
+}): Promise<Metadata> {
+  const { query } = await searchParams;
+
+  return {
+    title: `Search results for "${query}"`,
+    description: `Explore products related to "${query}"`,
+  };
 }
