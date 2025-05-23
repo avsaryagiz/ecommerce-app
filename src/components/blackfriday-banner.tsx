@@ -7,7 +7,7 @@ export default async function BlackFridayBanner() {
     return null;
   }
   return (
-    <div className="mx-4 mt-2 rounded-lg bg-gradient-to-r from-red-600 to-black px-6 py-10 text-white shadow-lg">
+    <section className="container mx-auto mt-2 rounded-lg bg-gradient-to-r from-red-600 to-black px-6 py-10 text-white shadow-lg">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex-1">
           <h2 className="mb-4 text-left text-3xl font-extrabold sm:text-5xl">
@@ -29,6 +29,6 @@ export default async function BlackFridayBanner() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

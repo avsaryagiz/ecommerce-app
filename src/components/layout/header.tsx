@@ -21,7 +21,7 @@ export default function Header() {
   );
 
   return (
-    <header className="flex flex-wrap items-center justify-between px-4 py-2">
+    <header className="flex flex-wrap items-center justify-between px-4 py-2 container mx-auto">
       {/* Top row */}
       <div className="flex w-full flex-wrap items-center justify-between">
         <Link

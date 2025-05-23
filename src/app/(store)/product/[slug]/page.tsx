@@ -23,7 +23,7 @@ export default async function ProductPage({
   const isOutOfStock =
     product.stock !== undefined && product.stock !== null && product.stock <= 0;
   return (
-    <div className="container mx-auto px-4 py-8">
+    <section className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div
           className={cn(
@@ -60,6 +60,6 @@ export default async function ProductPage({
           <AddToBasketButton product={product} disabled={isOutOfStock} />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
