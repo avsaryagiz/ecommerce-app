@@ -30,7 +30,7 @@ export default function Header() {
           <Link
             href="/"
             aria-label="Go to homepage"
-            className="text-2xl font-bold text-blue-500 hover:opacity-80 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:mr-4 sm:text-3xl"
+            className="text-primary text-2xl font-bold hover:opacity-80 focus:ring-2 focus:outline-none sm:mr-4 sm:text-3xl"
           >
             <span className="font-brand block text-center font-bold sm:text-left">
               Zera

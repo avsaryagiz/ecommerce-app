@@ -5,7 +5,12 @@ import { cn, formatCurrency } from "@/lib/utils";
 import type { Product } from "../../sanity.types";
 import { ROUTES } from "@/constants/app-routes";
 
-export default function ProductThumb({ product }: { product: Product }) {
+interface ProductThumbProps {
+  product: Product;
+  priority?: boolean;
+}
+
+export default function ProductThumb({ product, priority }: ProductThumbProps) {
   // Check if the product is out of stock (stock defined and zero or less)
   const isOutOfStock = product.stock != null && product.stock <= 0;
 
@@ -27,6 +32,8 @@ export default function ProductThumb({ product }: { product: Product }) {
           src={urlFor(product.image!).url()}
           alt={product.name || "Unnamed product image"}
           fill
+          priority={priority}
+          quality={90}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {/* Show "Out of Stock" overlay if product is not available */}
