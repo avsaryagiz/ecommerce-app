@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👗 Zera – E-commerce Demo
 
-## Getting Started
+Zera is a demo e-commerce site for a fictional clothing brand, designed to showcase a modern full-stack setup with focus on user experience, admin flexibility, and seamless integrations.
 
-First, run the development server:
+## 🔗 Live Demo
+
+👉 [https://ecommerce-app-eta-rose.vercel.app/](https://ecommerce-app-eta-rose.vercel.app/)
+
+## 🚀 Tech Stack
+
+- [Next.js](https://nextjs.org/) – React framework with SSR and SSG support  
+- [TypeScript](https://www.typescriptlang.org/) – Ensuring type safety and code clarity  
+- [Tailwind CSS](https://tailwindcss.com/) – Utility-first styling for rapid UI development  
+- [ShadCN UI](https://ui.shadcn.com/) – Modern component library for a polished UI  
+- [Sanity](https://www.sanity.io/) – Headless CMS managing products, orders, coupons, and more  
+- [Clerk](https://clerk.com/) – User authentication and management  
+- [Stripe](https://stripe.com/) – Payment processing  
+- [Zustand](https://zustand-demo.pmnd.rs/) – Lightweight state management for cart handling  
+
+## ✨ Features
+
+- 🛍️ Full user authentication with Clerk  
+- 💳 Secure checkout with Stripe integration  
+- 🛒 Efficient cart state management using Zustand  
+- 📝 Admin control over orders and coupons via Sanity Studio  
+- 🧪 Sanity Presentation Mode enabling draft previews and live editing  
+- 📝 Codebase enriched with detailed comments for maintainability and learning  
+
+## 🧠 What I Learned
+
+Building Zera solidified my understanding of integrating complex third-party services in a cohesive way, while maintaining clean, type-safe, and scalable code architecture. The demo balances realistic e-commerce functionality with developer-friendly flexibility.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Version
+1.0.0
