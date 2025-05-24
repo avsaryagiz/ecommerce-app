@@ -40,6 +40,9 @@ export default function CategorySelector({
           variant="outline"
           role="combobox"
           aria-expanded={open}
+          aria-haspopup="listbox"
+          aria-controls="category-listbox"
+          aria-label="Filter products by category"
           className="w-[200px] justify-between"
         >
           {/* Display selected category title or placeholder text */}
@@ -51,7 +54,11 @@ export default function CategorySelector({
       </PopoverTrigger>
 
       {/* Popover content with searchable category list */}
-      <PopoverContent className="w-[200px] p-0 shadow-md">
+      <PopoverContent
+        className="w-[200px] p-0 shadow-md"
+        id="category-listbox"
+        role="listbox"
+      >
         <Command>
           {/* Search input to filter categories */}
           <CommandInput

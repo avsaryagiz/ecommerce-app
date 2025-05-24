@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { CheckmarkIcon } from "@sanity/icons";
+import { ROUTES } from "@/constants/app-routes";
 import { Button } from "@/components/ui";
 import useBasketStore from "@/stores/basket-store";
 
@@ -59,10 +60,20 @@ export default function SuccessPage() {
           {/* Action buttons for order and continue shopping */}
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button asChild className="bg-green-600 hover:bg-green-700">
-              <Link href="/orders">View Order Details</Link>
+              <Link
+                href={ROUTES.ORDERS}
+                aria-label="View the details of your order"
+              >
+                View Order Details
+              </Link>
             </Button>
             <Button asChild variant="outline">
-              <Link href="/">Continue Shopping</Link>
+              <Link
+                href={ROUTES.HOME}
+                aria-label="Continue shopping on homepage"
+              >
+                Continue Shopping
+              </Link>
             </Button>
           </div>
         </div>

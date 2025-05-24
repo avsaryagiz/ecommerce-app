@@ -11,7 +11,7 @@ import {
 } from "@clerk/nextjs";
 import { PackageIcon, SearchIcon, TrolleyIcon } from "@sanity/icons";
 import { InputWithAddon } from "../input-with-addon";
-import { Button, buttonVariants } from "../ui";
+import { Button, buttonVariants, Label } from "../ui";
 import useBasketStore from "@/stores/basket-store";
 import { cn } from "@/lib/utils";
 
@@ -39,7 +39,11 @@ export default function Header() {
 
           {/* Search Form */}
           <Form action="/search" role="search" className="flex w-full max-w-lg">
+            <Label htmlFor="search-input" className="sr-only">
+              Search for products
+            </Label>
             <InputWithAddon
+              id="search-input"
               placeholder="Search for products..."
               name="query"
               rightAddon={
@@ -47,6 +51,7 @@ export default function Header() {
                   variant="ghost"
                   type="submit"
                   className="cursor-pointer"
+                  aria-label="Submit search"
                 >
                   <SearchIcon className="size-5" />
                   Search
@@ -98,7 +103,13 @@ export default function Header() {
               </div>
             ) : (
               <SignInButton mode="modal">
-                <Button size="sm" className="cursor-pointer">Sign In</Button>
+                <Button
+                  size="sm"
+                  className="cursor-pointer"
+                  aria-label="Sign in to your account"
+                >
+                  Sign In
+                </Button>
               </SignInButton>
             )}
           </ClerkLoaded>

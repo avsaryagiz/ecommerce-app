@@ -162,13 +162,23 @@ export default function BasketPage() {
                     onClick={handleCheckout}
                     className="w-full cursor-pointer"
                     disabled={isLoading}
-                    aria-disabled={isLoading}
+                    aria-busy={isLoading}
+                    aria-label={
+                      isLoading
+                        ? "Processing your checkout"
+                        : "Proceed to checkout"
+                    }
                   >
                     {isLoading ? "Processing..." : "Proceed to Checkout"}
                   </Button>
                 ) : (
                   <SignInButton mode="modal">
-                    <Button className="w-full">Sign in to Checkout</Button>
+                    <Button
+                      className="w-full"
+                      aria-label="Sign in to continue to checkout"
+                    >
+                      Sign in to Checkout
+                    </Button>
                   </SignInButton>
                 )}
               </CardContent>

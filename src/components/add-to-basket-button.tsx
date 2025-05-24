@@ -44,12 +44,21 @@ export default function AddToBasketButton({
           itemCount === 0 && "cursor-not-allowed bg-gray-100",
         )}
         disabled={itemCount === 0 || disabled}
+        aria-label="Decrease item quantity"
+        aria-disabled={itemCount === 0 || disabled}
+        title="Decrease item quantity"
       >
         –
       </Button>
 
       {/* Display current item count */}
-      <span className="w-8 text-center font-semibold">{itemCount}</span>
+      <span
+        className="w-8 text-center font-semibold"
+        aria-label={`Current item count: ${itemCount}`}
+        title={`Current item count: ${itemCount}`}
+      >
+        {itemCount}
+      </span>
 
       {/* Button to increase item count */}
       <Button
@@ -61,6 +70,9 @@ export default function AddToBasketButton({
           disabled && "cursor-not-allowed bg-gray-400",
         )}
         disabled={disabled}
+        aria-disabled={disabled}
+        aria-label="Increase item quantity"
+        title="Increase item quantity"
       >
         +
       </Button>

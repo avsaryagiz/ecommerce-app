@@ -41,3 +41,4 @@ export { Button, buttonVariants } from "./button";
 export { Separator } from "./separator";
 export { Input } from "./input";
 export { Badge } from "./badge";
+export { Label } from "./label";
